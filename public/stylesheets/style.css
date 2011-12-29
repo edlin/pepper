@@ -1,8 +1,22 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	font-family: verdana,sans-serif;
+	background-color: gray;
+	background-image: url(http://gayadesign.com/images/background.jpg);
+	background-position: 50% 50%;
+	padding: 0px;
+	margin: 0px;
 }
 
-a {
-  color: #00B7FF;
+.content {
+	width: 800px;
+	margin: 0px auto;
+	background-color: #ffffff;
+	padding: 20px;
+}
+
+h1 {
+	color:#221A69;
+	font-weight:normal;
+	text-decoration:none;
 }

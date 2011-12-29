@@ -1,6 +1,18 @@
 !!!
 html
-  head
+  head 
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+    block scripts
+      link(rel='stylesheet', href='/stylesheets/style.css')
+      script(src='/javascripts/vendor/jquery-1.7.1.min.js')
+
+      link(rel='stylesheet', href='/stylesheets/vendor/garagedoor.css')
+      script(src='/javascripts/vendor/garagedoorjQuery.js')
+      
+  body
+    include menu
+    #background
+      img(src="/images/background.jpg", alt="hello")
+    block content
+      p hello
+

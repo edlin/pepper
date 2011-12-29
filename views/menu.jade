@@ -1,0 +1,23 @@
+#garagedoor.garagedoor
+  .item(title='linktofile')
+    .underlay
+      Caption text
+    img.overlay(src='/images/garage5.jpg')
+    .mouse
+      img(src='/images/nothing.gif')
+        &nbsp;
+
+  .item(title='linktofile')
+    .underlay
+      Caption text
+    img.overlay(src='/images/garage5.jpg')
+    .mouse
+      img(src='/images/nothing.gif')
+        &nbsp;
+
+
+script
+  GarageDoor.scrollY = -55;
+  GarageDoor.scrollX = 0;
+  GarageDoor.setBindings('garagedoor');
+
