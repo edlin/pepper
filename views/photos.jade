@@ -1,7 +1,35 @@
 extends layout 
 
-block append content
+append scripts
+  script(src='/vendor/galleria/galleria-1.2.6.min.js')
+   
+append content
   h1= title
   p Welcome to #{title}
+
+  #galleria
+
+  script
+    Galleria.loadTheme('/vendor/galleria/themes/classic/galleria.classic.min.js');
+    var data = [
+      {
+        image: '/images/img1.jpg',
+        thumb: '/images/thumb1.jpg',
+        title: 'my first image',
+        description: 'Lorem ipsum caption'
+      },
+      {
+        image: '/images/img1.jpg',
+        thumb: '/images/thumb1.jpg',
+        title: 'my second image',
+        description: 'Another caption'
+      }
+    ];
+    $('#galleria').galleria({
+      width: 1000,
+      height:1000,
+      data_source: data
+    });
+
 
 
