@@ -1,3 +1,7 @@
+exports.init = function(config) {
+  this.collection = config.collection
+  this.site_password = config.site_password;
+}
 
 /*
  * GET home page.
@@ -56,12 +60,67 @@ exports.accommodations = function(req, res){
  */
 
 exports.rsvp = function(req, res){
+  var auth = req.session.auth || false;
+  /// display all the names of the people if authenicated
+  // distinct
+  res.render('rsvp', { title: 'Express', auth: auth });
+};
+
+exports.rsvp_query = function(req, res){
+  if (req.body.q === 'login') {
+    if (req.body.password === site_password) {
+      req.session.auth = true;
+      res.render('rsvp', { title: 'Express',  auth: true });
+    } else {
+      req.session.auth = false;
+      res.render('rsvp', { title: 'Express', auth: false });
+    }
+  } else {
+    if (req.session.auth === true) {
+      switch (req.body.q) {
+      case 'search':
+        // look for the name in the search, return all the groups that they are in
+        var query = {};
+        // search for name in list
+        this.collection.find({'people.name': req.body.name}, {}, function (err, cursor) {
+          cursor.toArray(function(err,groups) {
+            res.rend('rsvp_query', { title: 'Express', result: 'people', groups: groups });
+          });
+        });
+        break;
+      case 'register':
+          // look at the req.body.names and req.body.hash, req.body.comments see which ones are registered
+          // check if there is an update, update time 
+        var query = {hash: req.body.hash, coming: {$exists:false}, 'people.name': { $all: req.body.names }};
+        var fields = {$set: {coming: req.body.names, comments: req.body.comments, update_at: new Date()}};
+        var options = {};
+        this.collection.findAndModify(query, [], fields, options, function(err, doc) {
+          if (err) {
+            console.log(err);
+            res.rend('rsvp_query', { title: 'Express', result: 'error' });
+          } else {
+            if (doc) {
+              res.rend('rsvp_query', { title: 'Express', result: 'success' });
+            } else {
+              res.rend('rsvp_query', { title: 'Express', result: 'hacker' });
+            }
+          }
+        });
+        break;
+      default:
+        req.session.auth = false;
+        res.render('rsvp', { title: 'Express', auth: false });
+      }
+    } else {
+      res.render('rsvp', { title: 'Express', auth: false });
+    }
+  }
+};
+
+exports.rsvp_query = function(req, res){
   res.render('rsvp', { title: 'Express' })
 };
 
-exports.rsvp_post = function(req, res){
-  res.render('rsvp', { title: 'Express' })
-};
 
 
 /*                                                                              

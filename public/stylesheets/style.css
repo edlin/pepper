@@ -8,6 +8,25 @@ body {
 	margin: 0px;
 }
 
+#background { 
+  left: 0; 
+  min-height: 950px; 
+  min-width: 980px; 
+  position: absolute; 
+  top: 0; 
+  width: 100%;
+  z-index: -1;
+}
+
+#background img { 
+  left: 0; 
+  min-width: 1350px; 
+  position: absolute; 
+  top: 0; 
+  width: 100%; 
+  z-index: -2; 
+}
+
 .content {
 	width: 800px;
 	margin: 0px auto;
