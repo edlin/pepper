@@ -30,7 +30,9 @@ db.open(function(p_db) {
       routes.init(config);
       
       console.log('soju is up and ready to go');
-      var app = module.exports = express.createServer();
+      var app = module.exports = express.createServer(
+        express.favicon(__dirname + '/public/favicon.ico')
+      );
 
       app.configure(function(){
         app.set('views', __dirname + '/views');
@@ -54,7 +56,8 @@ db.open(function(p_db) {
 
       // Routes
 
-      app.get('/', routes.index);
+      app.get('/', routes.splash);
+      app.get('/main', routes.index);
       app.get('/encounter', routes.encounter);
       app.get('/engagement', routes.engagement);
       app.get('/fun_facts', routes.fun_facts);

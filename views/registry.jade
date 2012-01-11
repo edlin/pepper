@@ -1,7 +1,24 @@
 extends layout 
 
-block append content
-  h1= title
-  p Welcome to #{title}
+append scripts
+  link(rel='stylesheet', href='/stylesheets/index.css')
+
+append content
+  #thanks
+    p.
+      Thank you for your generosity and love towards us as we
+      start a new chapter in life!
+
+    p.
+      Because we are unaware of our needs and our first home will be cozy and
+      modest, we will appreciate monetary gifts.
+
+    p.
+      Needless to say, we also covet your prayers as we strive to be a 
+      God-honoring couple. Please pray that we would be a team that grows 
+      together in the Lord and will be more effective together than as 
+      singles in kingdom labor.
+  img#dnh_pic2(src='/images/img1.jpg')
+
 
 

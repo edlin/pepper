@@ -1,14 +1,13 @@
 extends layout 
 
-append scripts
-  script(src='/vendor/galleria/galleria-1.2.6.min.js')
-   
-append content
-  h1= title
-  p Welcome to #{title}
+append links
+  link(rel='stylesheet', href='/stylesheets/photos.css')
 
+append content
   #galleria
 
+append scripts
+  script(src='/vendor/galleria/galleria-1.2.6.min.js')
   script
     Galleria.loadTheme('/vendor/galleria/themes/classic/galleria.classic.min.js');
     var data = [
@@ -26,10 +25,7 @@ append content
       }
     ];
     $('#galleria').galleria({
-      width: 1000,
-      height:1000,
+      width: 686,
+      height:400,
       data_source: data
     });
-
-
-

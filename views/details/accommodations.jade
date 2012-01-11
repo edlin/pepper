@@ -1,7 +1,23 @@
 extends ../layout 
 
-block append content
-  h1= title
-  p Welcome to #{title}
+append links
+  link(rel='stylesheet', href='/stylesheets/location.css')
+
+append content
+  .floatRight.nudgeLeft
+    img#gmap(src='http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=300x380&maptype=roadmap&markers=color:blue%7Csize:small%7Clabel:S%7C134+N+Kenwood+St,Glendale,CA&sensor=false',alt='Hello')
+  // alternative text
+  .leftColumn.nudgeRight.scrollbar
+    #lodge1.accom
+      p dog
+    #lodge2.accom
+      p dsfsdf
+
+  append scripts
+    script
+      $('.accom').mouseOver(function(err) {
+  //      switch between the id and change the map accordingly.. update the link 
+      });
+
 
 

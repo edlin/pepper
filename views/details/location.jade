@@ -1,7 +1,23 @@
 extends ../layout 
 
-block append content
-  h1= title
-  p Welcome to #{title}
+append links
+  link(rel='stylesheet', href='/stylesheets/location.css')
+
+append content
+  .floatRight.nudgeLeft
+    img#gmap(src='http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=300x380&maptype=roadmap&markers=color:blue%7Csize:small%7Clabel:S%7C134+N+Kenwood+St,Glendale,CA&sensor=false')
+  // alternative text
+  .leftColumn
+    #church_location.relative.nudgeRight
+      b Ceremony and Reception:
+      p Glendale First United Methodist Church 
+      p 134 N Kenwood St.
+      p Glendale, CA 91206
+      p Ceremony: 3:00PM
+      p Reception: 5:00PM
+    .center
+      img#church_pic.relative(src='/images/church.jpg')
+
+
 
 

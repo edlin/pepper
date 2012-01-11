@@ -1,10 +1,13 @@
 #nav, #nav ul {
+  font-family: "Lucida Galligraphy","Brush Script MT", Lucida; 
+  font-size: 24px;
   margin: 0;
   padding: 0;
   list-style-type: none;
   list-style-position: outside;
   position: relative;
   line-height: 1.5em;
+  z-index: 10;
 }
 
 #nav #title, 
@@ -12,15 +15,20 @@
 #nav a:active, 
 #nav a:visited {
   display: block;
-  padding: 0px 5px;
-  border: 1px solid #333;
-  color: #fff;
+  padding: 0px 10px;
+//  border: 1px solid #333;
+  color: #000;
   text-decoration: none;
-  background-color: #333;
+  background-color: transparent;
+}
+#nav a:link,
+#nav a:active,
+#nav a:visited {
+  background-color: rgba(254,247,241,0.95);
 }
 
 #nav a:hover {
-  background-color: #fff;
+  background-color: rgba(254,247,241,0.95);
   color: #333;
 }
 
@@ -31,13 +39,13 @@
 
 #nav ul {
   position: absolute;
-  width: 12em;
+  width: 6em;
   top: 1.5em;
   display: none;
 }
 
 #nav li ul a {
-  width: 12em;
+  width: 6em;
   float: left;
 }
 

@@ -1,37 +1,44 @@
 body {
-	font-size: 10px;
-	font-family: verdana,sans-serif;
-	background-color: gray;
-	background-image: url(http://gayadesign.com/images/background.jpg);
-	background-position: 50% 50%;
+	font-size: 16px;
+	font-family: garamond,georgia,verdana,sans-serif;
+	background-color: #FEF0DB;
+	background-image: url('/images/background_wo_knife.jpg');
+  background-position: 50% 0%;
+  background-size: 1000px;
+  background-repeat: no-repeat;
 	padding: 0px;
 	margin: 0px;
 }
 
-#background { 
-  left: 0; 
-  min-height: 950px; 
-  min-width: 980px; 
-  position: absolute; 
-  top: 0; 
-  width: 100%;
-  z-index: -1;
-}
-
-#background img { 
-  left: 0; 
-  min-width: 1350px; 
-  position: absolute; 
-  top: 0; 
-  width: 100%; 
-  z-index: -2; 
-}
-
-.content {
-	width: 800px;
-	margin: 0px auto;
-	background-color: #ffffff;
+#main {
+  height: 560px; 
+	width: 760px;
+	margin: 65px auto 0px;
 	padding: 20px;
+}
+
+#header {
+height:39px;
+}
+
+#content {
+  height: 400px;
+  margin: 21px 37px 20px;
+}  
+
+#footer {
+  margin-top: 38px;
+}
+
+#footer_link {
+  background: transparent;
+  margin: 0px 278px;
+  height: 35px;
+  padding: 0px 45px 0px 47px;
+}
+
+a#footer_link:hover {
+  color: #221A69;
 }
 
 h1 {
@@ -39,3 +46,48 @@ h1 {
 	font-weight:normal;
 	text-decoration:none;
 }
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.relative {
+  position: relative;
+}
+
+.scrollbar {
+  overflow: auto;
+}
+
+.leftColumn {
+  width: 360px;
+}
+
+.nudgeLeft {
+  margin-right: 15px;
+}
+
+.nudgeRight {
+  margin-left: 15px;
+}
+
+.center {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+.link {
+  font-family: "Lucida Calligraphy","Brush Script MT", Lucida;
+  font-size: 30px;
+  color: #8f85e9;
+  text-decoration: none;
+}
+
+/* images */

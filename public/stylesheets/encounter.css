@@ -1,0 +1,37 @@
+#content {
+  overflow: auto;
+  padding-right: 12px;
+}
+
+.img {
+  width: 50px;
+}
+
+.desc {
+  width: 530px;
+  margin-bottom: 10px;
+}
+
+table tr th:first-child {
+  font-size: 1em;
+}
+
+table tr th {
+  font-size: .8em;
+}
+
+table tr th a {
+  text-decoration: none;
+}
+
+.name {
+  font-size: 1em;
+}
+
+.br {
+  background: #CECECE;
+  width: 590px;
+  height: 3px;
+  padding: 0;
+  margin: 10px 63px 10px 33px;
+}

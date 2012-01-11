@@ -1,7 +1,21 @@
 extends layout 
 
-block append content
-  h1= title
-  p Welcome to #{title}
+append links
+  link(rel='stylesheet', href='/stylesheets/index.css')
 
+append content
+  img#dnh_pic(src='/images/img1.jpg')
+  #welcome hello world
+  #countdown 
+    span#days Too many 
+    | days until Wedding
+
+  append scripts
+    script
+      var today = new Date();
+      var end = new Date("2012-03-31");
+      var diff = new Date(end - today +28800000); // + 8 for pst
+      var days = diff / 86400000;
+      $('#days').text(Math.floor(days)+' ');
+      console.log($('#days').text());
 

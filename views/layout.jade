@@ -2,18 +2,24 @@
 html
   head 
     title= title
-    block scripts
+    block links
       link(rel='stylesheet', href='/stylesheets/style.css')
-      script(src='/javascripts/vendor/jquery-1.7.1.min.js')
-
       link(rel='stylesheet', href='/stylesheets/menu.css')
-      script(src='/javascripts/menu.js')
-      
+
   body
-    include menu
-    #background
-      img(src="/images/background.jpg", alt="hello")
-    block content
-      p hello
-    include footer
+    #main
+      #header
+        include menu
+      #content
+        block content
+      #footer
+        #footer_link
+    block scripts
+      script(src='/javascripts/vendor/jquery-1.7.1.min.js')
+      script(src='/javascripts/menu.js')
+      script
+        $('#footer_link').click(function(e) {
+          window.location.href = '/main';
+        });
+
 
