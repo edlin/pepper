@@ -4,19 +4,90 @@ append links
   link(rel='stylesheet', href='/stylesheets/location.css')
 
 append content
-  .floatRight.nudgeLeft
-    img#gmap(src='http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=300x380&maptype=roadmap&markers=color:blue%7Csize:small%7Clabel:S%7C134+N+Kenwood+St,Glendale,CA&sensor=false',alt='Hello')
-  // alternative text
-  .leftColumn.nudgeRight.scrollbar
-    #lodge1.accom
-      p dog
-    #lodge2.accom
-      p dsfsdf
+  .floatLeft.nudgeRight
+    h1 Accommodations
+    #accommodations.scrollbar
+      .accom
+        .name Rest
+        .addr 
+        .cost ~$
+          span &#x221E;
+        .dist_BUR From BUR: 
+          span &#x221E;
+          |  mi.
+        .dist_LAX From LAX: 
+          span &#x221E;
+          |  mi.
+        .dist_recp From Reception: 
+          span &#x221E;
+          |  mi.
+        .notes Notes: 
+          span n/a
+        .border
+  .map.floatRight.nudgeLeft
+    a.link(href='http://maps.google.com/maps?q=134+N+Kenwood+St,+Glendale,+CA+91205', target='_blank', title='CLick me')
+      img#gmap(src='http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=300x340&maptype=roadmap&markers=color:blue%7Csize:small%7Clabel:C%7C134+N+Kenwood+St,Glendale,CA&sensor=false')
 
-  append scripts
-    script
-      $('.accom').mouseOver(function(err) {
-  //      switch between the id and change the map accordingly.. update the link 
+append scripts
+  script
+    var glink_def = 'http://maps.google.com/maps?q=134+N+Kenwood+St,+Glendale,+CA+91205';
+    var gmap_def = 'http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=300x340&maptype=roadmap&markers=color:blue%7Csize:small%7Clabel:C%7C134+N+Kenwood+St,Glendale,CA&sensor=false';
+    var glink_head ='http://maps.google.com/maps?daddr=134+N+Kenwood+St,Glendale,CA&saddr=';
+    var gmap_head = 'http://maps.googleapis.com/maps/api/staticmap?&size=300x340&maptype=roadmap';
+    var church_marker = '&markers=color:blue%7Csize:small%7Clabel:S%7C134+N+Kenwood+St,Glendale,CA&sensor=false';
+    var accommodations = [
+      {
+        name: "blank1",
+        addr: "huntington beach, ca",
+        cost: 345,
+        dist_BUR: 0,
+        dist_LAX: 0,
+        dist_recp: 0,
+        notes: "text"
+      },
+      {
+        name: "blank2",
+        addr: "",
+        gmap: "url",
+        cost: 345,
+        dist_BUR: 0,
+        dist_LAX: 0,
+        notes: "text"
+      },
+      {
+      }
+    ];
+
+    // load up the accommodations
+    var parent = $('#accommodations');
+    var template = $('#accommodations .accom');
+    $.each(accommodations, function(i, elem) {
+        var item = template.clone().appendTo('#accommodations');
+        item.children('.name').html(elem.name);
+        item.children('.addr').html(elem.addr);
+        item.children('.cost').children('span').html(elem.cost);
+        item.children('.dist_BUR').children('span').html(elem.dist_BUR);
+        item.children('.dist_LAX').children('span').html(elem.dist_LAX);
+        item.children('.dist_recp').children('span').html(elem.dist_recp);
+        item.children('.notes').children('span').html(elem.notes);
+        item.css('display','block');
+    });
+
+    $('#accommodations .accom').last().children('.border').css('display','none');
+  
+    $('.accom').hover(function() {
+        console.log('hit');
+        // switch between the id and change the map accordingly.. update the link 
+        var addr = $(this).children('.addr').html().replace(' ', '+');
+        if (addr !== '') {
+          $('.map a').attr('href', glink_head+addr);
+          $('#gmap').attr('src', gmap_head+'&markers=color:green%7Csize:small%7Clabel:A%7C'+addr+church_marker);
+        } else {
+          $('.map a').attr('href', glink_def);
+          $('#gmap').attr('src', gmap_def);
+        }
+      },
+      function() {
       });
 
 

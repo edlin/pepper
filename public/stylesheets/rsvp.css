@@ -1,0 +1,64 @@
+.login form {
+  padding: 140px 191px;
+}
+
+#matched_parties {
+  width: 650px;
+  padding: 0px 16px 0px;
+}
+
+.login fieldset {
+  width: 276px; // 298
+}
+
+legend {
+  font-family: "Lucida Calligraphy","Brush Script MT", Lucida;
+  font-size: 1.3em;
+}
+
+.example {
+  padding-left: 53px;
+  float:left;
+  font-size: .8em;
+  color: grey;
+}
+
+#hints {
+  position:relative;
+  top: -27px;
+  left: 69px;
+}
+
+.guess {
+  position: absolute;
+  background-color: white;
+  width: 200px;
+  top: 0px;
+  padding: 2px 0px 2px 8px;
+  border-style:dotted;
+  border-width: 1px;
+  z-index: 5;
+}
+
+.guess.selected {
+  background-color: blue;
+}
+
+#hidden {
+  display:none;
+}
+
+#error_box {
+  float:right;
+  font-size: .8em;
+  color: red;
+}
+
+.desc {
+  font-size: .7em;
+}
+
+
+.notes {
+  resize: none;
+}

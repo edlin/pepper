@@ -6,25 +6,25 @@
 var express = require('express')
 , mongo = require('mongodb')
 , config = require('./config')
+, MongoStore = require('connect-mongo')
+, db
 ;
 
 
+mongo.connect(process.env.MONGOLAB_URI, {}, function(err, db) {
+  db.addListener("error", function(error) {
+    console.log("Error connecting to mongo -- perhaps it isn't running?");
+  });
 
-db = new mongo.Db('soju', new mongo.Server(config.mongo_host, config.mongo_port, {}), {});
 
-db.addListener("error", function(error) {
-  console.log("Error connecting to mongo -- perhaps it isn't running?");
-});
+  var port = process.env.PORT || 3000;
 
-var port = process.env.PORT || 3000;
-
-// Configuration
-
-db.open(function(p_db) {
+  // Configuration
   db.createCollection('guests', function(err, collection) {
     db.collection('guests', function(err, collection) {
 
       config.collection = collection;
+      config.site_password = process.env.site_password || config.site_password;
 
       var routes = require('./routes');
       routes.init(config);
@@ -41,7 +41,12 @@ db.open(function(p_db) {
         app.use(express.bodyParser());
         app.use(express.methodOverride());
         app.use(express.cookieParser());
-        app.use(express.session({ secret: 'tsdf32r389uio4398ui4jrkffj' }));
+        app.use(express.session({ secret: process.env.session_secret || config.session_secret,
+                                  store: new MongoStore({
+                                    url: process.env.MONGOLAB_URI,
+                                    db:  process.env.MONGOLAB_DB || "soju"
+                                  })
+                                }));
         app.use(app.router);
         app.use(express.static(__dirname + '/public'));
       });
@@ -66,9 +71,12 @@ db.open(function(p_db) {
       app.get('/location', routes.location);
       app.get('/accommodations', routes.accommodations);
       app.get('/rsvp', routes.rsvp);
-      app.post('/rsvp', routes.rsvp_post);
+      app.post('/rsvp', routes.rsvp_query);
       app.get('/registry', routes.registry);
       app.get('/photos', routes.photos);
+
+      app.post('/get_names', routes.get_names);
+      app.post('/get_parties', routes.get_parties);
 
       app.listen(port);
 

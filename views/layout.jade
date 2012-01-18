@@ -18,6 +18,12 @@ html
       script(src='/javascripts/vendor/jquery-1.7.1.min.js')
       script(src='/javascripts/menu.js')
       script
+        $('.scrollbar').hover(function() {
+            $(this).css('overflow', 'auto');                                          
+          },
+          function() {
+            $(this).css('overflow', 'hidden');
+        });
         $('#footer_link').click(function(e) {
           window.location.href = '/main';
         });

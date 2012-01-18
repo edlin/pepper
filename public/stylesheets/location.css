@@ -1,8 +1,53 @@
 #church_location {
-  top: 10px;
+  padding-top: 20px;
 }
 
+#church_location p {
+  padding: 0px;
+  margin: .2em;
+}
+
+.church {
+  margin: 30px 20px 20px;
+}  
+
 #church_pic {
-  top: 30px;
-  width: 200px;
+  width: 255px;
+}
+
+#gmap:hover {
+  opacity: 0.6;
+}
+
+#gmap {
+  border-style:ridge;
+  border-width:10px;
+  border-color: white;
+}
+
+#accommodations {
+  height: 300px;
+  padding-right: 30px;
+}
+
+.accom:hover {
+  opacity: 1;
+}
+
+.accom {
+  opacity: 0.6;
+  display:none;
+}
+
+.border,
+.accom:hover .border {
+  width: 260px;
+  background-color: black;
+  height: 2px;
+  margin: 10px 20px 10px;
+  opacity: 0.6;
+}
+
+.name {
+  font-weight: bold;
 }

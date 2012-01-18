@@ -3,6 +3,6 @@ module.exports = config = {
 
   "mongo_host" : "localhost", 
   "mongo_port" : 27017,
-
-  "site_password" : "site_password"
+  "session_secret" : 'enter secret here',
+  "site_password" : "password"
 }

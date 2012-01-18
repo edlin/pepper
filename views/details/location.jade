@@ -4,19 +4,23 @@ append links
   link(rel='stylesheet', href='/stylesheets/location.css')
 
 append content
-  .floatRight.nudgeLeft
-    img#gmap(src='http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=300x380&maptype=roadmap&markers=color:blue%7Csize:small%7Clabel:S%7C134+N+Kenwood+St,Glendale,CA&sensor=false')
-  // alternative text
-  .leftColumn
-    #church_location.relative.nudgeRight
-      b Ceremony and Reception:
+  .floatLeft.nudgeRight
+    #church_location
+      p
+        b Ceremony and Reception:
       p Glendale First United Methodist Church 
       p 134 N Kenwood St.
       p Glendale, CA 91206
       p Ceremony: 3:00PM
       p Reception: 5:00PM
-    .center
+    .church
       img#church_pic.relative(src='/images/church.jpg')
+  .floatRight.nudgeLeft
+    a.link(href='http://maps.google.com/maps?q=134+N+Kenwood+St,+Glendale,+CA+91205&hl=en&sll=41.599003,-87.52225&sspn=0.009676,0.017939&oq=134+N+Kenwood+St.,+glendale&vpsrc=0&hnear=134+N+Kenwood+St,+Glendale,+California+91205&t=h&z=16',
+  target='_blank', title='Click me')
+      img#gmap(src='http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=300x340&maptype=roadmap&markers=color:blue%7Csize:small%7Clabel:S%7C134+N+Kenwood+St,Glendale,CA&sensor=false')
+
+
 
 
 

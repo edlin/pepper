@@ -1,0 +1,14 @@
+extends layout 
+
+append links
+  link(rel='stylesheet', href='/stylesheets/rsvp.css')
+
+append content
+  if (result == 'error') 
+    p there was an internal error
+  if (result == 'success')
+    p SUCCESS! cya at the wedding
+  if (result == 'hacker')
+    p nice try hacker
+
+

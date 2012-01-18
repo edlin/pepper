@@ -1,7 +1,39 @@
 extends layout 
 
+append links
+  link(rel='stylesheet', href='/stylesheets/rsvp.css')
+  link(rel='stylesheet', href='/vendor/jquery-ui/css/smoothness/jquery-ui-1.8.17.custom.css')  
+
 append content
-  h1= title
-  p Welcome to #{title}
+  if auth != true
+    .login
+      form(name='login', method='post', action='/rsvp')
+        fieldset
+          legend Please pass the salt:
+          | password:
+          input#password(type='password', name='pass', size=20);
+          input(type='hidden', name='q', value='login')
+          input(type='submit', value='here')
+
+  else
+    .search
+      form(name='Search', method='post', action='/rsvp')
+        fieldset
+          div Name: 
+            input#name_in(type='text', name='name', size=40);
+            input(type='hidden', name='q', value='search')
+            input#submit(type='submit', value='Submit')
+          .example (e.g. John Kim, Mr. Cho, Stella Mom)
+          #error_box
+
+      #hints
+    #matched_parties.scrollbar
+
+      #accordion
 
 
+
+if auth
+   append scripts
+    script(src='/vendor/jquery-ui/js/jquery-ui-1.8.17.custom.min.js')
+    script(src='/javascripts/rsvp.js')

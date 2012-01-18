@@ -1,6 +1,8 @@
+var routes = {};
+
 exports.init = function(config) {
-  this.collection = config.collection
-  this.site_password = config.site_password;
+  routes.collection = config.collection;
+  routes.site_password = config.site_password;
 }
 
 exports.splash = function(req, res) {
@@ -72,7 +74,7 @@ exports.rsvp = function(req, res){
 
 exports.rsvp_query = function(req, res){
   if (req.body.q === 'login') {
-    if (req.body.password === site_password) {
+    if (req.body.pass === routes.site_password) {
       req.session.auth = true;
       res.render('rsvp', { title: 'd&h RSVP',  auth: true });
     } else {
@@ -82,31 +84,25 @@ exports.rsvp_query = function(req, res){
   } else {
     if (req.session.auth === true) {
       switch (req.body.q) {
-      case 'search':
-        // look for the name in the search, return all the groups that they are in
-        var query = {};
-        // search for name in list
-        this.collection.find({'people.name': req.body.name}, {}, function (err, cursor) {
-          cursor.toArray(function(err,groups) {
-            res.rend('rsvp_query', { title: 'd&h RSVP', result: 'people', groups: groups });
-          });
-        });
-        break;
       case 'register':
           // look at the req.body.names and req.body.hash, req.body.comments see which ones are registered
           // check if there is an update, update time 
-        var query = {hash: req.body.hash, coming: {$exists:false}, 'people.name': { $all: req.body.names }};
-        var fields = {$set: {coming: req.body.names, comments: req.body.comments, update_at: new Date()}};
+        if (req.body.notes.length > 140) {
+          res.render('rsvp_query', { title: 'd&h RSVP', result: 'hacker'});
+        }
+        var count = parseInt(req.body.count);
+        var query = {hash: req.body.hash, coming: {$exists:false}, count: {$gte: count}};
+        var fields = {$set: {coming: count, notes: req.body.notes, update_at: new Date()}};
         var options = {};
-        this.collection.findAndModify(query, [], fields, options, function(err, doc) {
+        routes.collection.findAndModify(query, [], fields, options, function(err, doc) {
           if (err) {
             console.log(err);
-            res.rend('rsvp_query', { title: 'd&h RSVP', result: 'error' });
+            res.render('rsvp_query', { title: 'd&h RSVP', result: 'error' });
           } else {
             if (doc) {
-              res.rend('rsvp_query', { title: 'd&h RSVP', result: 'success' });
+              res.render('rsvp_query', { title: 'd&h RSVP', result: 'success' });
             } else {
-              res.rend('rsvp_query', { title: 'd&h RSVP', result: 'hacker' });
+              res.render('rsvp_query', { title: 'd&h RSVP', result: 'hacker' });
             }
           }
         });
@@ -119,10 +115,6 @@ exports.rsvp_query = function(req, res){
       res.render('rsvp', { title: 'd&h RSVP', auth: false });
     }
   }
-};
-
-exports.rsvp_query = function(req, res){
-  res.render('rsvp', { title: 'd&h RSVP' })
 };
 
 
@@ -142,4 +134,43 @@ exports.registry = function(req, res){
 
 exports.photos = function(req, res){
   res.render('photos', { title: 'd&h Photos' })
+};
+
+
+/*
+ * API calls
+ */
+
+exports.get_names = function(req, res){
+  if (req.session.auth === true) {
+    routes.collection.find({}, {}, function(err, cursor) {
+      cursor.toArray(function(err, groups) {
+        var names = [];
+        var parties = [];
+        for (var i = 0; i < groups.length; i++) {
+          var party = {};
+          names.push.apply(names, groups[i].people);
+          party.people = groups[i].people;
+          party.desc = groups[i].desc;
+          party.tag = groups[i].tag;
+          party.count = groups[i].count;
+          party.done = !!groups[i].coming;
+          party.hash = groups[i].hash;
+          parties.push(party);
+        }
+        names.sort();
+        var prev = '';
+        var uniq_names = [];
+        for (var i = 0; i < names.length; i++) {
+          if (prev !== names[i]) {
+            uniq_names.push(names[i]);
+            prev = names[i];
+          }
+        }
+        res.send({data: uniq_names, parties:parties});
+      });
+    });
+  } else {
+    res.render('rsvp', {title: 'd&h RSVP', auth: false});
+  }
 };
