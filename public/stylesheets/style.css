@@ -18,16 +18,16 @@ body {
 }
 
 #header {
-height:39px;
+  height:39px;
 }
 
 #content {
-  height: 400px;
-  margin: 21px 37px 20px;
+  height: 390px;
+  margin: 15px 37px 20px;
 }  
 
 #footer {
-  margin-top: 38px;
+  margin-top: 52px;
 }
 
 #footer_link {

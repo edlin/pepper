@@ -1,11 +1,31 @@
 #enter {
-  text-align: center;  
+  text-align: center;
+  width:160px;
+  margin-top: 15px;
+  margin-left: 15px;
+  padding-top: 40px;
+}
+
+#center {
+  padding: 35px 50px 50px 50px;
+  width: 660px;
+  height: 400px;
+
 }
 
 #snp {
   width: 300px;
 }
 
+#wine {
+  width: 380px;
+}
+
 #picture {
-  margin: 100px 230px 50px;
+//  margin: 100px 230px 50px;
+}
+
+#bw {
+  padding-top: 12px;
+  width: 200px;
 }

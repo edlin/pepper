@@ -9,7 +9,8 @@ append content
     #accommodations.scrollbar
       .accom
         .name Rest
-        .addr 
+        .addr1
+        .addr2
         .cost ~$
           span &#x221E;
         .dist_BUR From BUR: 
@@ -23,6 +24,7 @@ append content
           |  mi.
         .notes Notes: 
           span n/a
+        a.link
         .border
   .map.floatRight.nudgeLeft
     a.link(href='http://maps.google.com/maps?q=134+N+Kenwood+St,+Glendale,+CA+91205', target='_blank', title='CLick me')
@@ -37,24 +39,27 @@ append scripts
     var church_marker = '&markers=color:blue%7Csize:small%7Clabel:S%7C134+N+Kenwood+St,Glendale,CA&sensor=false';
     var accommodations = [
       {
-        name: "blank1",
-        addr: "huntington beach, ca",
-        cost: 345,
-        dist_BUR: 0,
-        dist_LAX: 0,
-        dist_recp: 0,
-        notes: "text"
+        name: "Vagabond Inn Glendale",
+        addr1: "120 W Colorado St.",
+        addr2: "Glendale, CA 91204",
+        phone: "818-240-1700",
+        cost: "65-$100",
+        dist_BUR: "8.3",
+        dist_LAX: "9.5",
+        dist_recp: "0.4",
+        notes: "For guests that will be flying in, Burbank airport is preferable as you can avoid traffic on Highway 5",
+        link: "http://www.hotels.com/hotel/details.html?pa=2&pn=1&ps=2&tab=description&hotelId=111793&arrivalDate=03-30-12&departureDate=04-01-12&rooms%5B0%5D.numberOfAdults=2&roomno=1&validate=false&previousDateful=false&reviewOrder=date_newest_first"
       },
       {
-        name: "blank2",
-        addr: "",
-        gmap: "url",
-        cost: 345,
-        dist_BUR: 0,
-        dist_LAX: 0,
-        notes: "text"
-      },
-      {
+        name: "Hilton Glendale",
+        addr1: "100 W Glenoaks Blvd",
+        addr2: "Glendale, CA 91204",
+        phone: "818-956-5466",
+        cost: "150-$300",
+        dist_BUR: "7.7",
+        dist_LAX: "10.7",
+        dist_recp: "1.1",
+        notes: "Complimentary shuttle service to Burbank airport from 6AM – 10PM"
       }
     ];
 
@@ -64,21 +69,27 @@ append scripts
     $.each(accommodations, function(i, elem) {
         var item = template.clone().appendTo('#accommodations');
         item.children('.name').html(elem.name);
-        item.children('.addr').html(elem.addr);
+        item.children('.addr1').html(elem.addr1);
+        item.children('.addr2').html(elem.addr2);
         item.children('.cost').children('span').html(elem.cost);
         item.children('.dist_BUR').children('span').html(elem.dist_BUR);
         item.children('.dist_LAX').children('span').html(elem.dist_LAX);
         item.children('.dist_recp').children('span').html(elem.dist_recp);
         item.children('.notes').children('span').html(elem.notes);
+        if (elem.link) {
+          item.children('.link').attr('href', elem.link);
+          item.children('.link').attr('target', '_blank');
+          item.children('.link').html('Click to book.')          
+        }
         item.css('display','block');
     });
 
     $('#accommodations .accom').last().children('.border').css('display','none');
   
     $('.accom').hover(function() {
-        console.log('hit');
         // switch between the id and change the map accordingly.. update the link 
-        var addr = $(this).children('.addr').html().replace(' ', '+');
+        var addr = $(this).children('.addr1').html().replace(' ', '+');
+        addr += $(this).children('.addr2').html().replace(' ', '+');
         if (addr !== '') {
           $('.map a').attr('href', glink_head+addr);
           $('#gmap').attr('src', gmap_head+'&markers=color:green%7Csize:small%7Clabel:A%7C'+addr+church_marker);

@@ -4,7 +4,8 @@
 }
 
 .img {
-  width: 50px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .desc {
@@ -33,5 +34,5 @@ table tr th a {
   width: 590px;
   height: 3px;
   padding: 0;
-  margin: 10px 63px 10px 33px;
+  margin: 10px 33px 10px 33px;
 }

@@ -27,6 +27,7 @@
 
 #accommodations {
   height: 300px;
+  width: 300px;
   padding-right: 30px;
 }
 
@@ -50,4 +51,9 @@
 
 .name {
   font-weight: bold;
+}
+
+
+.accom a.link {
+  font-size: 1.6em;
 }
