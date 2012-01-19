@@ -7,10 +7,6 @@
   margin-bottom: 0px;
 }
 
-#dnh_pic2 {
- width: 300px;
-}
-
 #countdown {
   font-size: .9em;
   text-align: center;
@@ -30,9 +26,20 @@ p {
 
 #thanks {
   text-align:left;
-  width: 420px;
-  margin: 0px 133px 0px 133px;
+  padding-top: 30px;
+  margin: 0px 43px 43px;
+  width: 600px;
   height: 200px;
+}
+
+#thanks p {
+  margin: 0px 0px 20px;
+}
+
+#dnh_pic2 {
+ width: 150px;
+ float: right;
+
 }
 
 
