@@ -18,6 +18,9 @@ body {
 }
 
 #header {
+  padding-left: 85px;
+  padding-right: 86px;
+  width: 589px;
   height:39px;
 }
 

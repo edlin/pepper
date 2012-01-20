@@ -50,12 +50,13 @@ p {
 
 #verse {
   width: 250px;
+  height: 0px;
   text-align: right;
   text-wrap: normal;
   font-size: .7em;
-  position:absolute;
-  top: 325px;
-  left: 520px;
+  position:relative;
+  top: 193px;
+  left: 250px;
   z-index: 5;
   
 }
