@@ -158,10 +158,10 @@ $(document).ready(function() {
           submitElem = $('<input type="submit" value="Submit">');
           qElem = $('<input type="hidden" name="q", value="register">');
           hashElem = $('<input type="hidden" name="hash", value="'+parties[i].hash+'">');
-
+          notesHeaderElem = $('<div class="notes_hdr">').append('Additional Notes: <span> (e.g. Special Accomodations or Dietary Restrictions) </span>');
           contentElem.append(partyElem);
           contentElem.append(rsvpElem);
-          contentElem.append('Notes:');
+          contentElem.append(notesHeaderElem);
           contentElem.append(notesElem);
           contentElem.append(submitElem);
           contentElem.append(qElem);

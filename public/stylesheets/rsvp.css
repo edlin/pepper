@@ -63,3 +63,7 @@ legend {
 .notes {
   resize: none;
 }
+
+.notes_hdr span{
+  font-size: .8em;
+}
