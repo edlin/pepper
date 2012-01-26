@@ -42,7 +42,7 @@ legend {
 }
 
 .guess.selected {
-  background-color: blue;
+  background-color: #cecece;
 }
 
 #hidden {
@@ -55,11 +55,22 @@ legend {
   color: red;
 }
 
+.party {
+  padding-bottom: 15px;
+  font-size: .9em;
+}
+
 .desc {
   font-size: .7em;
 }
 
-
+.rsvp_count {
+  padding-bottom:15px;
+}
+.submit_button {
+  clear: both;
+  float:right;
+}
 .notes {
   resize: none;
 }
@@ -67,3 +78,16 @@ legend {
 .notes_hdr span{
   font-size: .8em;
 }
+
+.msg_box {
+  background-color: #cecece;
+  padding:  40px;
+  width: 340px;
+  position: relative;
+  top: 100px;
+  margin: 0 113px;
+  border: solid 10px;
+  border-radius: 5px;
+  border-color: #cecece;
+}
+

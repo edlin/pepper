@@ -134,7 +134,7 @@ $(document).ready(function() {
 
         if (parties[i].done) {
           contentElem.append($('<p>').append('Seems like you have already registered.'));
-          contentElem.append($('<p>').append('Please contact david.marrying.hannah@gmail.com if this is incorrect'));
+          contentElem.append($('<p>').append('Please contact david.marrying.hannah@gmail.com if this is incorrect.'));
         } else {
           /// other people in the party
           /// Rsvping for: # people
@@ -153,9 +153,10 @@ $(document).ready(function() {
           }          
           rsvpElem = $('<div class="rsvp_count">').append('RSVP-ing for ').append(rsvpSelect).append(' people.');
           
-          notesElem = $('<textarea class="notes" name="notes" cols="40" rows="5">');
-
-          submitElem = $('<input type="submit" value="Submit">');
+          notesElem = $('<textarea class="notes" name="notes" cols="69" rows="5">');
+          floatElem = $('<div class="clear">');
+          submitElem = $('<div class="submit_button">');
+          submitElem.append($('<input type="submit" value="Submit">'));
           qElem = $('<input type="hidden" name="q", value="register">');
           hashElem = $('<input type="hidden" name="hash", value="'+parties[i].hash+'">');
           notesHeaderElem = $('<div class="notes_hdr">').append('Additional Notes: <span> (e.g. Special Accomodations or Dietary Restrictions) </span>');
@@ -163,6 +164,7 @@ $(document).ready(function() {
           contentElem.append(rsvpElem);
           contentElem.append(notesHeaderElem);
           contentElem.append(notesElem);
+          contentElem.append(floatElem);
           contentElem.append(submitElem);
           contentElem.append(qElem);
           contentElem.append(hashElem);

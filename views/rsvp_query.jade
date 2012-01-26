@@ -5,10 +5,13 @@ append links
 
 append content
   if (result == 'error') 
-    p there was an internal error
+    .msg_box.
+      There was an internal error.
+      Please contact david.marrying.hannah@gmail.com and
+      describe your situation. 
   if (result == 'success')
-    p SUCCESS! cya at the wedding
+    .msg_box Success! Cya at the wedding.
   if (result == 'hacker')
-    p nice try hacker
+    .msg_box Nice try, hacker!
 
 

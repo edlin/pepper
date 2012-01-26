@@ -10,12 +10,19 @@
   width: 530px;
   margin-bottom: 10px;
 }
+
+table {
+  text-align: left;
+}
+
 table tr th:first-child {
   font-size: 1em;
 }
 table tr th {
   font-size: 0.8em;
 }
+
+tr:nth-child(odd)    { background-color:#eee; }
 table tr th a {
   text-decoration: none;
 }
@@ -28,4 +35,30 @@ table tr th a {
   height: 3px;
   padding: 0;
   margin: 10px 33px 10px 33px;
+}
+
+#firstDate {
+  padding: 20px 144px; 
+}
+#firstDate img{
+  width: 351px;
+}
+
+#engagePic {
+  padding: 20px 195px;
+}
+
+#engagePic img {
+  width: 250px;
+}
+
+#feetPic img {
+  padding: 20px 0px; 
+  width: 650px;
+}
+
+.border img{
+  border: solid 10px;
+  border-radius: 5px;
+  border-color: #cecece;
 }

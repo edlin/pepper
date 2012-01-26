@@ -8,7 +8,7 @@
 }
 
 #countdown {
-  font-size: .9em;
+  font-size: 1em;
   text-align: center;
 } 
 #welcome {
@@ -18,6 +18,10 @@
   text-align: left;
   height: 133px;
   font-size: .9em;
+}
+
+#days {
+  font-size: 1.1em;
 }
 
 p {

@@ -38,6 +38,7 @@
 .accom {
   opacity: 0.6;
   display:none;
+  width: 275px;
 }
 
 .border,
