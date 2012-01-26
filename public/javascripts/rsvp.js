@@ -148,7 +148,7 @@ $(document).ready(function() {
         
           partyElem = $('<div class="party" name="party">').append('People in party: '+names);        
           rsvpSelect = $('<select name="count">')
-          for (j = 1; j < parties[i].count+1; j++) {
+          for (j = parties[i].count; j >= 0; j--) {
             rsvpSelect.append($('<option value='+j+'>').html(j));
           }          
           rsvpElem = $('<div class="rsvp_count">').append('RSVP-ing for ').append(rsvpSelect).append(' people.');
