@@ -21,11 +21,11 @@ append content
     span#days Too many 
     | days until Wedding!
 
-  append scripts
-    script
-      var today = new Date();
-      var end = new Date("2012-03-31");
-      var diff = new Date(end - today +28800000); // + 8 for pst
-      var days = diff / 86400000;
-      $('#days').text(Math.floor(days)+' ');
+append scripts
+  script
+    var today = new Date();
+    var end = new Date("2012-03-31");
+    var diff = new Date(end - today +28800000); // + 8 for pst
+    var days = diff / 86400000;
+    $('#days').text(Math.floor(days)+' ');
 
