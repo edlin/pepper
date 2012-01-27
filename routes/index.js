@@ -154,7 +154,7 @@ exports.get_names = function(req, res){
           party.desc = groups[i].desc;
           party.tag = groups[i].tag;
           party.count = groups[i].count;
-          party.done = !!groups[i].coming;
+          party.done = !!(groups[i].coming !== undefined);
           party.hash = groups[i].hash;
           parties.push(party);
         }
