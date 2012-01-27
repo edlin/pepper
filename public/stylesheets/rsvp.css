@@ -71,6 +71,7 @@ legend {
   clear: both;
   position: relative;
   left: 500px;
+  width: 61px;
 }
 .notes {
   resize: none;

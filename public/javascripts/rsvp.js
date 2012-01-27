@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-  var previous = "";
+  var previous = "",
+    names,
+    parties;
 
   $.ajax({
     type: 'POST',
@@ -184,7 +186,7 @@ $(document).ready(function() {
     });
 
     $( "#accordion" ).accordion("destroy" );
-    $("#accordion").accordion({active: "none", autoHeight: "false", collapsible: true});      
+    $("#accordion").accordion({active: "none", autoHeight: true, collapsible: true});      
 
 
 
