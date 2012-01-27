@@ -168,9 +168,9 @@ $(document).ready(function() {
           notesElem.append($('<textarea class="notes" name="notes" cols="66" rows="5">'));
           floatElem = $('<div class="clear">');
           submitElem = $('<div class="submit_button">');
-          submitElem.append($('<input type="submit" value="Submit">'));
-          qElem = $('<input type="hidden" name="q", value="register">');
-          hashElem = $('<input type="hidden" name="hash", value="'+parties[i].hash+'">');
+          submitElem.append($('<input type="submit" value="Submit"/>'));
+          qElem = $('<input type="hidden" name="q", value="register"/>');
+          hashElem = $('<input type="hidden" name="hash", value="'+parties[i].hash+'"/>');
           notesHeaderElem = $('<div class="notes_hdr">').append('Additional Notes: <span> (e.g. Special Accomodations or Dietary Restrictions) </span>');
           contentElem.append(partyElem);
           contentElem.append(rsvpElem);
