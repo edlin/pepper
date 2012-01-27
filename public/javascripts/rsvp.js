@@ -25,16 +25,17 @@ $(document).ready(function() {
   });
 
   $('#name_in').keyup(function(event) {
+    var selected;
     switch (event.keyCode) {
       case 38: // up
-        var selected = $('.selected');
+        selected = $('.selected');
         if (selected.prev().length !== 0) {
           selected.removeClass('selected');
           selected.prev().addClass('selected');
         }
         break;
       case 40: // down
-        var selected = $('.selected');
+        selected = $('.selected');
         if (selected.next().length  !== 0) {
           selected.removeClass('selected');
           selected.next().addClass('selected');
@@ -60,7 +61,6 @@ $(document).ready(function() {
           matched.push(names[i]);
         }
       }
-      var hints = $('#hints');
 
       var top = 0,
       guessElem;
@@ -147,7 +147,7 @@ $(document).ready(function() {
           
         
           partyElem = $('<div class="party" name="party">').append('People in party: '+names);        
-          rsvpSelect = $('<select name="count">')
+          rsvpSelect = $('<select name="count">');
           for (j = parties[i].count; j >= 0; j--) {
             rsvpSelect.append($('<option value='+j+'>').html(j));
           }          
