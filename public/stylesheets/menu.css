@@ -10,7 +10,8 @@
   z-index: 10;
 }
 
-#nav #title, 
+#nav .title,
+#nav li a.title,
 #nav a:link, 
 #nav a:active, 
 #nav a:visited {

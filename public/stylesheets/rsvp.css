@@ -69,7 +69,8 @@ legend {
 }
 .submit_button {
   clear: both;
-  float:right;
+  position: relative;
+  left: 500px;
 }
 .notes {
   resize: none;

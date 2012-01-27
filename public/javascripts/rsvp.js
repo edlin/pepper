@@ -154,7 +154,7 @@ $(document).ready(function() {
           rsvpElem = $('<div class="rsvp_count">').append('RSVP-ing for ').append(rsvpSelect).append(' people.');
           
           notesElem = $('<div class="notes_box">');
-          notesElem.append($('<textarea class="notes" name="notes" cols="69" rows="5">'));
+          notesElem.append($('<textarea class="notes" name="notes" cols="66" rows="5">'));
           floatElem = $('<div class="clear">');
           submitElem = $('<div class="submit_button">');
           submitElem.append($('<input type="submit" value="Submit">'));
