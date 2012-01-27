@@ -186,7 +186,7 @@ $(document).ready(function() {
     });
 
     $( "#accordion" ).accordion("destroy" );
-    $("#accordion").accordion({active: "none", autoHeight: true, collapsible: true});      
+    $("#accordion").accordion({active: "none", autoHeight: false, animated: false, collapsible: true});      
 
 
 
