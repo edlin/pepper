@@ -1,7 +1,7 @@
 !!!
-html
+html(xmlns="http://www.w3.org/1999/xhtml")
   head 
-    script
+    script(type="text/javascript")
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-28458352-1']);
       _gaq.push(['_trackPageview']);
@@ -25,9 +25,9 @@ html
       #footer
         #footer_link
     block scripts
-      script(src='/javascripts/vendor/jquery-1.7.1.min.js')
-      script(src='/javascripts/menu.js')
-      script
+      script(src='/javascripts/vendor/jquery-1.7.1.min.js', type="text/javascript")
+      script(src='/javascripts/menu.js', type="text/javascript")
+      script(type="text/javascript")
         $('.scrollbar').hover(function() {
             $(this).css('overflow', 'auto');                                          
           },
