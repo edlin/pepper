@@ -1,3 +1,4 @@
+/*jsl:option explicit*/
 $(document).ready(function() {
 
   var previous = "",
@@ -193,8 +194,8 @@ $(document).ready(function() {
       }
     });
 
-    $( "#accordion" ).accordion("destroy" );
-    $("#accordion").accordion({active: "none", collapsible: true});      
+    //$( "#accordion" ).accordion("destroy" );
+   // $("#accordion").accordion({active: "none", collapsible: true});      
 
 
 
