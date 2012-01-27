@@ -109,11 +109,19 @@ $(document).ready(function() {
       matched = [], 
       input = selected.html() || previous, 
       accordion = $('#accordion'), 
-      partyElem, 
+      partyElem,
+      leadElem,
       contentElem, 
       content = 'hello world', 
       link, 
-      rsvpSelect;
+      rsvpSelect,
+      rsvpElem,
+      notesElem,
+      floatElem,
+      submitElem,
+      qElem,
+      hashElem,
+      notesHeaderElem;
 
     previous = input;
 
@@ -142,13 +150,13 @@ $(document).ready(function() {
           /// Rsvping for: # people
           /// notes: 
           /// submit
-          var names = parties[i].people[0];
+          var party_names = parties[i].people[0];
           for (j = 1; j < parties[i].people.length; j++) {
-            names += ', '+parties[i].people[j];
+            party_names += ', '+parties[i].people[j];
           }   
           
         
-          partyElem = $('<div class="party" name="party">').append('People in party: '+names);        
+          partyElem = $('<div class="party" name="party">').append('People in party: '+party_names);        
           rsvpSelect = $('<select name="count">');
           for (j = parties[i].count; j >= 0; j--) {
             rsvpSelect.append($('<option value='+j+'>').html(j));
@@ -186,7 +194,7 @@ $(document).ready(function() {
     });
 
     $( "#accordion" ).accordion("destroy" );
-    $("#accordion").accordion({active: "none", autoHeight: false, animated: false, collapsible: true});      
+    $("#accordion").accordion({active: "none", collapsible: true});      
 
 
 
