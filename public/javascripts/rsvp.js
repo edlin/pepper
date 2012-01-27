@@ -104,16 +104,16 @@ $(document).ready(function() {
       return;
     }
 
-    var i = 0
-    , j
-    , matched = []
-    , input = selected.html() || previous
-    , accordion = $('#accordion')
-    , partyElem
-    , contentElem
-    , content = 'hello world'
-    , link
-    , rsvpSelect;
+    var i = 0, 
+      j, 
+      matched = [], 
+      input = selected.html() || previous, 
+      accordion = $('#accordion'), 
+      partyElem, 
+      contentElem, 
+      content = 'hello world', 
+      link, 
+      rsvpSelect;
 
     previous = input;
 
