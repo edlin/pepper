@@ -46,51 +46,52 @@ $(document).ready(function() {
         break;
     }
   });
-  
+
   $('#name_in').keyup(function(event) {
     // need to ignore certain values
     if ($.inArray(event.keyCode,[9, 13, 38, 40]) !== -1) {
       return;
     }
     var input = $(this).val(),
-    matched = [],
-    i,
-    hints = $('#hints');
-    hints.empty();
-    if (input.length > 1) {
-      var patt=new RegExp('^'+input+'| '+input,'i');
-      for (i = 0; i < names.length; i++) {
-        if (names[i].match(patt)) {
-          matched.push(names[i]);
+      matched = [],
+      i,
+      hints = $('#hints');
+      hints.empty();
+
+      if (input.length > 1) {
+        var patt=new RegExp('^'+input+'| '+input,'i');
+        for (i = 0; i < names.length; i++) {
+          if (names[i].match(patt)) {
+            matched.push(names[i]);
+          }
         }
-      }
 
-      var top = 0,
-      guessElem;
-      for (i = 0; i < matched.length; i++) {
-        // create the new divs
-        if (i === 0) {
-          guessElem  = $('<div class="selected guess">');
-        } else {
-          guessElem  = $('<div class="guess">');
+        var top = 0,
+          guessElem;
+        for (i = 0; i < matched.length; i++) {
+          // create the new divs
+          if (i === 0) {
+            guessElem  = $('<div class="selected guess">');
+          } else {
+            guessElem  = $('<div class="guess">');
+          }
+          guessElem.html(matched[i]);
+          guessElem.css('top', top);
+          top += 26;
+          hints.append(guessElem);
         }
-        guessElem.html(matched[i]);
-        guessElem.css('top', top);
-        top += 26;
-        hints.append(guessElem);
+
+        $('.guess').hover(function() {
+          $('.guess').removeClass('selected');
+          $(this).addClass('selected');
+        }, function() {
+        });
+
+        $('.guess').click(function() {
+          submit_name();
+        });
+
       }
-
-      $('.guess').hover(function() {
-        $('.guess').removeClass('selected');
-        $(this).addClass('selected');
-      }, function() {
-      });
-
-      $('.guess').click(function() {
-        submit_name();
-      });
-
-    }
   });
 
   $('#submit').click(function(e) {
@@ -152,8 +153,8 @@ $(document).ready(function() {
           for (j = 1; j < parties[i].people.length; j++) {
             party_names += ', '+parties[i].people[j];
           }   
-          
-        
+
+
           partyElem = '<div class="party" name="party">People in party: '+party_names+'</div>';        
           rsvpSelect = '<select name="count">';
           for (j = parties[i].count; j >= 0; j--) {
@@ -161,7 +162,7 @@ $(document).ready(function() {
           }
           rsvpSelect += '</select>';
           rsvpElem = '<div class="rsvp_count">RSVP-ing for '+rsvpSelect+' people.</div>';
-          
+
           notesElem = '<div class="notes_box">';
           notesElem += '<textarea class="notes" name="notes" cols="66" rows="5"></textarea>';
           notesElem += '</div>';
@@ -182,8 +183,6 @@ $(document).ready(function() {
           contentElem += qElem;
           contentElem += hashElem;
         }
-        
-        alert(contentElem);
 
         contentElem += '</form>';
         accordion.append(leadElem+contentElem);
@@ -197,9 +196,6 @@ $(document).ready(function() {
 
     $( "#accordion" ).accordion("destroy" );
     $("#accordion").accordion({active: "none", collapsible: true});      
-
-
-
   };
 
 });
