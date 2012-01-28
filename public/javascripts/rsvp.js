@@ -186,8 +186,7 @@ $(document).ready(function() {
         alert(contentElem);
 
         contentElem += '</form>';
-        accordion.append(leadElem);
-        accordion.append(contentElem);
+        accordion.append(leadElem+contentElem);
       }
     }
     $('.notes').keyup(function() {
