@@ -181,11 +181,11 @@ $(document).ready(function() {
           contentElem += submitElem;
           contentElem += qElem;
           contentElem += hashElem;
-          contentElem += '</form>';
         }
         
+        //alert(contentElem);
 
-
+        contentElem += '</form>';
         accordion.append(leadElem);
         accordion.append(contentElem);
       }
