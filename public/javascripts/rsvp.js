@@ -183,7 +183,7 @@ $(document).ready(function() {
           contentElem += hashElem;
         }
         
-        //alert(contentElem);
+        alert(contentElem);
 
         contentElem += '</form>';
         accordion.append(leadElem);
