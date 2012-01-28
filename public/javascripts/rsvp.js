@@ -134,11 +134,10 @@ $(document).ready(function() {
     for (i = 0; i < parties.length; i++) {
       if ( $.inArray(input, parties[i].people)!== -1) {
         if (parties[i].desc) {
-          leadElem = $('<h3>').append($('<a href="#">').append($('<div class="name">').append(input), 
-                                                               $('<div class="desc">').html(parties[i].tag+' - '+parties[i].desc)));
+          /// appending two objects might make it unhappy
+          leadElem = '<h3><a href="#"><div class="name">' + input +'</div><div class="desc">'+parties[i].tag+' - '+parties[i].desc+'</div></a></h3>';
         } else {
-          leadElem = $('<h3>').append($('<a href="#">').append($('<div class="name">').append(input), 
-                                                               $('<div class="desc">').html(parties[i].tag)));
+          leadElem = '<h3><a href="#"><div class="name">' + input +'</div><div class="desc">'+parties[i].tag+'</div></a></h3>';
         }
         contentElem = $('<form action="/rsvp" method="post">');
 
