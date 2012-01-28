@@ -2,8 +2,8 @@
 $(document).ready(function() {
 
   var previous = "",
-    names,
-    parties;
+    names = [],
+    parties = [];
 
   $.ajax({
     type: 'POST',
@@ -135,7 +135,6 @@ $(document).ready(function() {
     for (i = 0; i < parties.length; i++) {
       if ( $.inArray(input, parties[i].people)!== -1) {
         if (parties[i].desc) {
-          /// appending two objects might make it unhappy
           leadElem = '<h3><a href="#"><div class="name">' + input +'</div><div class="desc">'+parties[i].tag+' - '+parties[i].desc+'</div></a></h3>';
         } else {
           leadElem = '<h3><a href="#"><div class="name">' + input +'</div><div class="desc">'+parties[i].tag+'</div></a></h3>';
