@@ -139,12 +139,10 @@ $(document).ready(function() {
         } else {
           leadElem = '<h3><a href="#"><div class="name">' + input +'</div><div class="desc">'+parties[i].tag+'</div></a></h3>';
         }
-        contentElem = $('<form action="/rsvp" method="post">');
-
-
+        contentElem = '<form action="/rsvp" method="post">';
         if (parties[i].done) {
-          contentElem.append($('<p>').append('Seems like you have already registered.'));
-          contentElem.append($('<p>').append('Please contact david.marrying.hannah@gmail.com if this is incorrect.'));
+          contentElem += '<p>Seems like you have already registered.</p>';
+          contentElem += '<p>Please contact david.marrying.hannah@gmail.com if this is incorrect.</p>';
         } else {
           /// other people in the party
           /// Rsvping for: # people
@@ -156,29 +154,34 @@ $(document).ready(function() {
           }   
           
         
-          partyElem = $('<div class="party" name="party">').append('People in party: '+party_names);        
-          rsvpSelect = $('<select name="count">');
+          partyElem = '<div class="party" name="party">People in party: '+party_names+'</div>';        
+          rsvpSelect = '<select name="count">';
           for (j = parties[i].count; j >= 0; j--) {
-            rsvpSelect.append($('<option value='+j+'>').html(j));
-          }          
-          rsvpElem = $('<div class="rsvp_count">').append('RSVP-ing for ').append(rsvpSelect).append(' people.');
+            rsvpSelect += '<option value='+j+'>'+j+'</option>';
+          }
+          rsvpSelect += '</select>';
+          rsvpElem = '<div class="rsvp_count">RSVP-ing for '+rsvpSelect+' people.</div>';
           
-          notesElem = $('<div class="notes_box">');
-          notesElem.append($('<textarea class="notes" name="notes" cols="66" rows="5">'));
-          floatElem = $('<div class="clear">');
-          submitElem = $('<div class="submit_button">');
-          submitElem.append($('<input type="submit" value="Submit"/>'));
-          qElem = $('<input type="hidden" name="q", value="register"/>');
-          hashElem = $('<input type="hidden" name="hash", value="'+parties[i].hash+'"/>');
-          notesHeaderElem = $('<div class="notes_hdr">').append('Additional Notes: <span> (e.g. Special Accomodations or Dietary Restrictions) </span>');
-          contentElem.append(partyElem);
-          contentElem.append(rsvpElem);
-          contentElem.append(notesHeaderElem);
-          contentElem.append(notesElem);
-          contentElem.append(floatElem);
-          contentElem.append(submitElem);
-          contentElem.append(qElem);
-          contentElem.append(hashElem);
+          notesElem = '<div class="notes_box">';
+          notesElem += '<textarea class="notes" name="notes" cols="66" rows="5"></textarea>';
+          notesElem += '</div>';
+          floatElem = '<div class="clear"></div>';
+          submitElem = '<div class="submit_button">';
+          submitElem += '<input type="submit" value="Submit"/>';
+          submitElem += '</div>';
+          qElem = '<input type="hidden" name="q", value="register"/>';
+          hashElem = '<input type="hidden" name="hash", value="'+parties[i].hash+'"/>';
+          notesHeaderElem = '<div class="notes_hdr">Additional Notes: <span> (e.g. Special Accomodations or Dietary Restrictions) </span></div>';
+
+          contentElem += partyElem;
+          contentElem += rsvpElem;
+          contentElem += notesHeaderElem;
+          contentElem += notesElem;
+          contentElem += floatElem;
+          contentElem += submitElem;
+          contentElem += qElem;
+          contentElem += hashElem;
+          contentElem += '</form>';
         }
         
 
