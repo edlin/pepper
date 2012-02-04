@@ -171,7 +171,7 @@ $(document).ready(function() {
           submitElem += '</div>';
           qElem = '<input type="hidden" name="q", value="register">';
           hashElem = '<input type="hidden" name="hash", value="'+parties[i].hash+'">';
-          notesHeaderElem = '<div class="notes_hdr">Additional Notes: <span> (e.g. Special Accomodations or Dietary Restrictions) </span></div>';
+          notesHeaderElem = '<div class="notes_hdr">Additional Notes: <span> (e.g. Special Accommodations or Dietary Restrictions) </span></div>';
 
           contentElem += partyElem;
           contentElem += rsvpElem;
