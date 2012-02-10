@@ -160,7 +160,7 @@ $(document).ready(function() {
             rsvpSelect += '<option value='+j+'>'+j+'</option>';
           }
           rsvpSelect += '</select>';
-          rsvpElem = '<div class="rsvp_count">RSVP-ing for '+rsvpSelect+' people.</div>';
+          rsvpElem = '<div class="rsvp_count">RSVP-ing for '+rsvpSelect+' people.<span>(Please, put 0 if you will not be attending.)</span></div>';
 
           notesElem = '<div class="notes_box">';
           notesElem += '<textarea class="notes" name="notes" cols="66" rows="5"></textarea>';

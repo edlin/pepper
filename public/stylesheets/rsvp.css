@@ -67,6 +67,11 @@ legend {
 .rsvp_count {
   padding-bottom:15px;
 }
+
+.rsvp_count span {
+  display: block;
+  font-size: .8em;
+}
 .submit_button {
   clear: both;
   position: relative;
