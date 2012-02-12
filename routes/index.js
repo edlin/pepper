@@ -190,13 +190,11 @@ var getRsvps = function(cb) {
       var lines = [],
         i;
       for (i = 0;i < groups.length; i++) {
-        console.log(groups[i]);
         var line = [];
         line.push(groups[i].people[0]);
         line.push(groups[i].tag);
         line.push(groups[i].coming);
         line.push(groups[i].notes);
-        console.log(line);
         var s = line.join(', ');
         lines.push(s);
       }
@@ -211,13 +209,13 @@ exports.nothere = function(req, res){
   var auth = req.session.special;
   /// display all the names of the people if authenicated
   // distinct
-//  if (auth) {
-//    getRsvps(function (rsvps) {
-//      res.render('nothere', { title: 'd&h o.O', auth: auth, rsvps: rsvps });
-//    });
-//  } else {
+  if (auth) {
+    getRsvps(function (rsvps) {
+      res.render('nothere_list', { title: 'd&h o.O', auth: auth, rsvps: rsvps });
+    });
+  } else {
     res.render('nothere', { title: 'd&h o.O', auth: false });
-//  }
+  }
 };
 
 exports.nothere_query = function(req, res){
