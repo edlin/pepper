@@ -25,6 +25,7 @@ mongo.connect(process.env.MONGOLAB_URI, {}, function(err, db) {
 
       config.collection = collection;
       config.site_password = process.env.site_password || config.site_password;
+      config.special_password = process.env.special_password || config.special_password;
 
       var routes = require('./routes');
       routes.init(config);
@@ -77,6 +78,9 @@ mongo.connect(process.env.MONGOLAB_URI, {}, function(err, db) {
 
       app.post('/get_names', routes.get_names);
       app.post('/get_parties', routes.get_parties);
+
+      app.get('/nothere', routes.nothere);
+      app.post('/nothere', routes.nothere_query);
 
       app.listen(port);
 

@@ -3,18 +3,19 @@ var routes = {};
 exports.init = function(config) {
   routes.collection = config.collection;
   routes.site_password = config.site_password;
-}
+  routes.special_password = config.special_password;
+};
 
 exports.splash = function(req, res) {
   res.render('splash', { title: 'd&h'});
-}
+};
 
 /*
  * GET home page.
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'd&h Home' })
+  res.render('index', { title: 'd&h Home' });
 };
 
 
@@ -23,15 +24,15 @@ exports.index = function(req, res){
  */
 
 exports.encounter = function(req, res){
-  res.render('story/encounter', { title: 'd&h Encounter' })
+  res.render('story/encounter', { title: 'd&h Encounter' });
 };
 
 exports.engagement = function(req, res){
-  res.render('story/engagement', { title: 'd&h Engagement' })
+  res.render('story/engagement', { title: 'd&h Engagement' });
 };
 
 exports.fun_facts = function(req, res){
-  res.render('story/fun_facts', { title: 'd&h Fun Facts' })
+  res.render('story/fun_facts', { title: 'd&h Fun Facts' });
 };
 
 
@@ -40,11 +41,11 @@ exports.fun_facts = function(req, res){
  */
 
 exports.guys = function(req, res){
-  res.render('party/guys', { title: 'd&h Guys' })
+  res.render('party/guys', { title: 'd&h Guys' });
 };
 
 exports.gals = function(req, res){
-  res.render('party/gals', { title: 'd&h Gals' })
+  res.render('party/gals', { title: 'd&h Gals' });
 };
 
 
@@ -53,11 +54,11 @@ exports.gals = function(req, res){
  */
 
 exports.location = function(req, res){
-  res.render('details/location', { title: 'd&h Location' })
+  res.render('details/location', { title: 'd&h Location' });
 };
 
 exports.accommodations = function(req, res){
-  res.render('details/accommodations', { title: 'd&h Accommodations' })
+  res.render('details/accommodations', { title: 'd&h Accommodations' });
 };
 
 
@@ -124,7 +125,7 @@ exports.rsvp_query = function(req, res){
  */
 
 exports.registry = function(req, res){
-  res.render('registry', { title: 'd&h Registry' })
+  res.render('registry', { title: 'd&h Registry' });
 };
 
 
@@ -133,7 +134,7 @@ exports.registry = function(req, res){
  */
 
 exports.photos = function(req, res){
-  res.render('photos', { title: 'd&h Photos' })
+  res.render('photos', { title: 'd&h Photos' });
 };
 
 
@@ -145,9 +146,10 @@ exports.get_names = function(req, res){
   if (req.session.auth === true) {
     routes.collection.find({}, {}, function(err, cursor) {
       cursor.toArray(function(err, groups) {
-        var names = [];
-        var parties = [];
-        for (var i = 0; i < groups.length; i++) {
+        var names = [],
+          parties = [],
+          i;
+        for (i = 0; i < groups.length; i++) {
           var party = {};
           names.push.apply(names, groups[i].people);
           party.people = groups[i].people;
@@ -159,9 +161,9 @@ exports.get_names = function(req, res){
           parties.push(party);
         }
         names.sort();
-        var prev = '';
-        var uniq_names = [];
-        for (var i = 0; i < names.length; i++) {
+        var prev = '',
+          uniq_names = [];
+        for (i = 0; i < names.length; i++) {
           if (prev !== names[i]) {
             uniq_names.push(names[i]);
             prev = names[i];
@@ -172,5 +174,65 @@ exports.get_names = function(req, res){
     });
   } else {
     res.render('rsvp', {title: 'd&h RSVP', auth: false});
+  }
+};
+
+
+
+/*                                                                              
+ * GET not here                                                               
+ */
+
+
+var getRsvps = function(cb) {
+  routes.collection.find({}, {}, function(err, cursor) {
+    cursor.toArray(function(err, groups) {
+      var lines = [],
+        i;
+      for (i = 0;i < groups.length; i++) {
+        console.log(groups[i]);
+        var line = [];
+        line.push(groups[i].people[0]);
+        line.push(groups[i].tag);
+        line.push(groups[i].coming);
+        line.push(groups[i].notes);
+        console.log(line);
+        var s = line.join(', ');
+        lines.push(s);
+      }
+      cb(lines);
+    });
+  });
+};
+
+
+
+exports.nothere = function(req, res){
+  var auth = req.session.special;
+  /// display all the names of the people if authenicated
+  // distinct
+//  if (auth) {
+//    getRsvps(function (rsvps) {
+//      res.render('nothere', { title: 'd&h o.O', auth: auth, rsvps: rsvps });
+//    });
+//  } else {
+    res.render('nothere', { title: 'd&h o.O', auth: false });
+//  }
+};
+
+exports.nothere_query = function(req, res){
+  if (req.body.q === 'login') {
+    if (req.body.pass === routes.special_password) {
+      req.session.special = true;
+      getRsvps(function (rsvps) {
+        res.render('nothere_list', { title: 'd&h o.O', auth: true, rsvps: rsvps });
+      });
+    } else {
+      req.session.special = false;
+      res.render('nothere', { title: 'd&h o.O', auth: false });
+    }
+  } else {
+      req.session.special = false;
+      res.render('nothere', { title: 'd&h o.O', auth: false });
   }
 };

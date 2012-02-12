@@ -1,0 +1,15 @@
+extends layout 
+
+append links
+  link(rel='stylesheet', href='/stylesheets/rsvp.css')
+
+append content
+  .login
+    form(name='login', method='post', action='/nothere')
+      fieldset
+        legend Best Chinese restaurant in Oakland:
+        | password:
+        input#password(type='password', name='pass', size=20);
+        input(type='hidden', name='q', value='login')
+        input(type='submit', value='here')
+
